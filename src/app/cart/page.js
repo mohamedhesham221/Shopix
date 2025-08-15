@@ -1,8 +1,12 @@
+import BreadcrumbNavigate from '@/components/BreadcrumbNavigate';
+import CartProducts from '@/components/cart/CartProducts';
+
 export default function CartPage() {
   return (
-    <div>
-      <h1>Cart Page</h1>
-      <p>Your cart is currently empty.</p>
-    </div>
+    <section className='px-5 md:px-15 lg:px-20 flex flex-col gap-y-15'>
+      <h1 className='sr-only'>Cart</h1>
+      <BreadcrumbNavigate category={'cart'} />
+      <CartProducts />
+    </section>
   );
 }

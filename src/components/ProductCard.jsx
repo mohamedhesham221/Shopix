@@ -9,22 +9,25 @@ import {
 	CardFooter,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Eye, Heart } from "lucide-react";
+import { Eye, Heart, ShoppingCart } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Rating as ReactRating,Star } from "@smastrom/react-rating";
-
+import { Rating as ReactRating, Star } from "@smastrom/react-rating";
+import useCart from "@/store/useCart";
+import { Button } from "./ui/button";
 const myStyles = {
-	itemShapes: Star, 
-	activeFillColor: "#facc15", 
-	inactiveFillColor: "#d1d5db", 
+	itemShapes: Star,
+	activeFillColor: "#facc15",
+	inactiveFillColor: "#d1d5db",
 };
 
 const ProductCard = ({ product, loading }) => {
 	const oldPrice =
 		product.price +
 		product.price * (Math.floor(product.discountPercentage) / 100);
+	const { addToCart } = useCart();
+
 	return (
 		<>
 			<Card
@@ -57,15 +60,38 @@ const ProductCard = ({ product, loading }) => {
 						height={100}
 						className="w-30 h-30 mb-2 rounded object-cover mx-auto group-hover:scale-95 transition-all"
 					/>
-					<motion.div
+					<motion.button
 						initial={{ y: 100 }}
 						animate={{ y: 0 }}
 						transition={{ duration: 0.3 }}
 						whileHover={{ y: 0 }}
-						className="text-center bg-black text-white cursor-pointer absolute bottom-0 left-0 right-0 p-2 translate-y-full group-hover:translate-y-0 transition-all"
+						className="hidden lg:flex items-center justify-center gap-2 bg-black text-white cursor-pointer absolute bottom-0 left-0 right-0 p-2 translate-y-full group-hover:translate-y-0 transition-all font-roboto"
+						onClick={() =>
+							addToCart({
+								id: product.id,
+								title: product.title,
+								img: product.thumbnail,
+								price: Number(product.price),
+								quantity: 0,
+							})
+						}
 					>
-						Add To Cart
-					</motion.div>
+						<ShoppingCart size={20}/> Add To Cart
+					</motion.button>
+					<Button
+						className="flex items-center justify-center gap-2 lg:hidden text-center bg-black text-white cursor-pointer font-roboto py-1.5 absolute bottom-0 left-0 right-0 rounded-none"
+						onClick={() =>
+							addToCart({
+								id: product.id,
+								title: product.title,
+								img: product.thumbnail,
+								price: Number(product.price),
+								quantity: 0,
+							})
+						}
+					>
+						<ShoppingCart size={20}/> Add To Cart
+					</Button>
 				</CardContent>
 				<CardFooter className={"flex flex-col justify-start gap-4"}>
 					<p className="text-start w-full font-inter">{product.title}</p>

@@ -5,8 +5,9 @@ import 'rc-slider/assets/index.css';
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
 import { ClerkProvider } from '@clerk/nextjs';
-import ReactQueryProvider from "@/components/ReactQueryProvider";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import Categories from '@/components/navbar/Categories';
+import CartSyncProvider from '@/providers/CartSyncProvider';
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700', '900'],
@@ -46,19 +47,21 @@ export default function RootLayout({ children }) {
   return (
 
     <ClerkProvider>
-      <ReactQueryProvider >
-        <html lang="en">
-          <body
-            className={`${roboto.variable} ${inter.variable} antialiased overflow-x-hidden`}
-          >
-            <Navbar />
-            <Categories />
-            <main>
-              {children}
-            </main>
-            <Footer />
-          </body>
-        </html>
+      <ReactQueryProvider>
+        <CartSyncProvider>
+          <html lang="en">
+            <body
+              className={`${roboto.variable} ${inter.variable} antialiased overflow-x-hidden`}
+            >
+              <Navbar />
+              <Categories />
+              <main>
+                {children}
+              </main>
+              <Footer />
+            </body>
+          </html>
+        </CartSyncProvider>
       </ReactQueryProvider>
     </ClerkProvider>
   );
