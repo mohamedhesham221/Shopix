@@ -9,7 +9,7 @@ import {
 } from "./ui/breadcrumb";
 import { SlashIcon } from "lucide-react";
 import Link from "next/link";
-import { formatText } from "@/utils/constants";
+import { formatText } from "@/utils/helpers";
 const BreadcrumbNavigate = ({ category = "category" }) => {
 	return (
 		<>

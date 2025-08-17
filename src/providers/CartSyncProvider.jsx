@@ -3,33 +3,58 @@ import useCart from "@/store/useCart";
 import { useUser } from "@clerk/nextjs";
 import { useEffect, useState } from "react";
 import { useGetUser } from "@/hooks/useGetUser";
+import { mergeCartData } from "@/utils/helpers";
 
 export default function CartSyncProvider({ children }) {
-  const { isSignedIn } = useUser();
-  const { userDB, updateUserCartInFirebase } = useGetUser();
-  const { cart, setCart, isHydrated } = useCart();
+	const { isSignedIn } = useUser();
+	const { userDB, updateUserCartInFirebase } = useGetUser();
+	const { cart, setCart, isHydrated } = useCart();
 
-  const [isCartLoadedFromFirebase, setIsCartLoadedFromFirebase] = useState(false);
+	const [isCartLoadedFromFirebase, setIsCartLoadedFromFirebase] =
+		useState(false);
+  // Initial Sync
+	useEffect(() => {
+		if (!isHydrated) return;
 
-  useEffect(() => {
-    if (!isHydrated) return;
+		if (isSignedIn && userDB) {
+			const firebaseCart = userDB?.cart || [];
+			const localCart = cart || [];
 
-    if (isSignedIn && userDB?.cart) {
-      setCart(userDB.cart);
-      setIsCartLoadedFromFirebase(true);
-    } else if (!isSignedIn) {
-      setCart([]);
-      setIsCartLoadedFromFirebase(false);
-    }
-  }, [isHydrated, isSignedIn, userDB]);
+			console.log("local cart", localCart);
+			console.log("firebase cart", firebaseCart);
 
-  useEffect(() => {
-    if (!isHydrated) return;
-    if (!isSignedIn) return;
-    if (!isCartLoadedFromFirebase) return;
+			let finalCart = [];
 
-    updateUserCartInFirebase(cart);
-  }, [cart, isHydrated, isSignedIn, isCartLoadedFromFirebase]);
+			if (firebaseCart.length > 0 && localCart.length === 0) {
+				finalCart = firebaseCart;
+			} else if (firebaseCart.length === 0 && localCart.length > 0) {
+				updateUserCartInFirebase(localCart);
+				finalCart = localCart;
+			} else if (firebaseCart.length > 0 && localCart.length > 0) {
+				finalCart = mergeCartData(localCart, firebaseCart);
+				updateUserCartInFirebase(finalCart);
+			} else {
+				finalCart = [];
+			}
 
-  return children;
+			console.log("final updated cart", finalCart);
+			setCart(finalCart);
+			setIsCartLoadedFromFirebase(true);
+		} else if (!isSignedIn) {
+			setCart([]);
+			setIsCartLoadedFromFirebase(false);
+		}
+	}, [isHydrated, isSignedIn, userDB, setCart]);
+  // Keep Firebase updated when cart changes
+	useEffect(() => {
+		if (!isHydrated) return;
+		if (!isSignedIn) return;
+		if (!isCartLoadedFromFirebase) return;
+		const firebaseCart = userDB?.cart || [];
+		if (JSON.stringify(firebaseCart) !== JSON.stringify(cart)) {
+			updateUserCartInFirebase(cart);
+		}
+	}, [cart, isHydrated, isSignedIn, isCartLoadedFromFirebase]);
+
+	return children;
 }

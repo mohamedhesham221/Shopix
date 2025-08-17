@@ -9,15 +9,15 @@ import { WishlistIcon } from "./WishlistIcon";
 import { UserDropdown } from "./UserDropdown";
 import useCreateUser from "@/hooks/useCreateUser";
 import useCart from "@/store/useCart";
-import { useWishlist } from "@/hooks/useWishlist";
+import useWishlist from "@/store/useWishlist";
 
 export default function Navbar() {
 	// Initialize all hooks
 	useCreateUser();
 
 	const { getTotalProducts } = useCart();
-	const { getWishlistItems } = useWishlist();
-
+	const { wishlist } = useWishlist();
+	const totalWishlistItems = wishlist?.length;
 	return (
 		<header className="sticky top-0 md:z-[9999] z-50 bg-white shadow-sm">
 			<div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
@@ -37,7 +37,7 @@ export default function Navbar() {
 						<CartIcon itemCount={getTotalProducts} />
 					</div>
 
-					<WishlistIcon itemCount={getWishlistItems} />
+					<WishlistIcon itemCount={totalWishlistItems} />
 					<UserDropdown />
 				</div>
 			</div>

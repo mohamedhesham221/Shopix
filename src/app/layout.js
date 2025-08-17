@@ -8,6 +8,9 @@ import { ClerkProvider } from '@clerk/nextjs';
 import ReactQueryProvider from "@/providers/ReactQueryProvider";
 import Categories from '@/components/navbar/Categories';
 import CartSyncProvider from '@/providers/CartSyncProvider';
+import WishlistSyncProvider from '@/providers/WishlistSyncProvider';
+import { Toaster } from 'sonner';
+
 const roboto = Roboto({
   subsets: ['latin'],
   weight: ['300', '400', '500', '700', '900'],
@@ -49,18 +52,28 @@ export default function RootLayout({ children }) {
     <ClerkProvider>
       <ReactQueryProvider>
         <CartSyncProvider>
-          <html lang="en">
-            <body
-              className={`${roboto.variable} ${inter.variable} antialiased overflow-x-hidden`}
-            >
-              <Navbar />
-              <Categories />
-              <main>
-                {children}
-              </main>
-              <Footer />
-            </body>
-          </html>
+          <WishlistSyncProvider>
+            <html lang="en">
+              <body
+                className={`${roboto.variable} ${inter.variable} antialiased overflow-x-hidden`}
+              >
+                <Navbar />
+                <Categories />
+                <main>
+                  {children}
+                  <Toaster
+                    position="top-center"
+                    richColors
+                    expand
+                    duration={3000}
+                    theme="dark"
+                  />
+
+                </main>
+                <Footer />
+              </body>
+            </html>
+          </WishlistSyncProvider>
         </CartSyncProvider>
       </ReactQueryProvider>
     </ClerkProvider>

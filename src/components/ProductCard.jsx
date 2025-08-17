@@ -9,25 +9,28 @@ import {
 	CardFooter,
 } from "./ui/card";
 import { Badge } from "./ui/badge";
-import { Eye, Heart, ShoppingCart } from "lucide-react";
+import { Eye, Heart, ShoppingCart, Trash } from "lucide-react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Rating as ReactRating, Star } from "@smastrom/react-rating";
 import useCart from "@/store/useCart";
 import { Button } from "./ui/button";
+import useWishlist from "@/store/useWishlist";
+import { toast } from "sonner";
+
 const myStyles = {
 	itemShapes: Star,
 	activeFillColor: "#facc15",
 	inactiveFillColor: "#d1d5db",
 };
 
-const ProductCard = ({ product, loading }) => {
+const ProductCard = ({ product, loading, inWishlist = false }) => {
 	const oldPrice =
 		product.price +
 		product.price * (Math.floor(product.discountPercentage) / 100);
 	const { addToCart } = useCart();
-
+	const { addToWishlist, removeFromWishlist } = useWishlist();
 	return (
 		<>
 			<Card
@@ -46,10 +49,30 @@ const ProductCard = ({ product, loading }) => {
 					<CardAction
 						className={"flex flex-col justify-center gap-3 items-center"}
 					>
-						<Link href={`/products/${product.id}`}>
-							<Eye className="w-4 h-4 cursor-pointer hover:text-hover-red" />
-						</Link>
-						<Heart className="w-4 h-4 cursor-pointer hover:text-hover-red" />
+						{!inWishlist ? (
+							<>
+								<Link href={`/products/${product.id}`}>
+									<Eye className="w-4 h-4 cursor-pointer hover:text-hover-red" />
+								</Link>
+								<Button
+									size="icon"
+									variant="ghost"
+									className="cursor-pointer hover:text-hover-red w-fit items-stretch"
+									onClick={() => addToWishlist(product.id)}
+								>
+									<Heart className="w-4 h-4" />
+								</Button>
+							</>
+						) : (
+							<Button
+								size="icon"
+								variant="ghost"
+								className="cursor-pointer text-red hover:text-hover-red w-fit items-stretch"
+								onClick={() => removeFromWishlist(product.id)}
+							>
+								<Trash />
+							</Button>
+						)}
 					</CardAction>
 				</CardHeader>
 				<CardContent className="overflow-y-hidden relative bg-[#f5f5f5] mb-5">
@@ -66,31 +89,33 @@ const ProductCard = ({ product, loading }) => {
 						transition={{ duration: 0.3 }}
 						whileHover={{ y: 0 }}
 						className="hidden lg:flex items-center justify-center gap-2 bg-black text-white cursor-pointer absolute bottom-0 left-0 right-0 p-2 translate-y-full group-hover:translate-y-0 transition-all font-roboto"
-						onClick={() =>
+						onClick={() => {
 							addToCart({
 								id: product.id,
 								title: product.title,
 								img: product.thumbnail,
 								price: Number(product.price),
-								quantity: 0,
-							})
-						}
+								quantity: 1,
+							});
+							removeFromWishlist(product.id);
+						}}
 					>
-						<ShoppingCart size={20}/> Add To Cart
+						<ShoppingCart size={20} /> Add To Cart
 					</motion.button>
 					<Button
 						className="flex items-center justify-center gap-2 lg:hidden text-center bg-black text-white cursor-pointer font-roboto py-1.5 absolute bottom-0 left-0 right-0 rounded-none"
-						onClick={() =>
+						onClick={() => {
 							addToCart({
 								id: product.id,
 								title: product.title,
 								img: product.thumbnail,
 								price: Number(product.price),
-								quantity: 0,
-							})
-						}
+								quantity: 1,
+							});
+							removeFromWishlist(product.id);
+						}}
 					>
-						<ShoppingCart size={20}/> Add To Cart
+						<ShoppingCart size={20} /> Add To Cart
 					</Button>
 				</CardContent>
 				<CardFooter className={"flex flex-col justify-start gap-4"}>

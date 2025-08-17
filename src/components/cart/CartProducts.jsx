@@ -20,7 +20,6 @@ import {
 	Loader2,
 } from "lucide-react";
 import CartTotalPrice from "./CartTotalPrice";
-import Loading from "@/app/cart/loading";
 import { useGetUser } from "@/hooks/useGetUser";
 
 const CartProducts = () => {
@@ -31,6 +30,7 @@ const CartProducts = () => {
 		decrementQuantity,
 		removeFromCart,
 		clearCart,
+		isHydrated
 	} = useCart();
 
 
@@ -44,6 +44,7 @@ const CartProducts = () => {
 			</div>
 		);
 	}
+
 
 	console.log("user", USER_ID);
 	console.log("user Database cart", userDB?.cart);

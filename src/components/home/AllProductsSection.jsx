@@ -25,7 +25,7 @@ const AllProductsSection = () => {
 						Explore Our Products
 					</p>
 				</TextFade>
-				<div className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-20">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 my-20">
 					{isLoading
 						? Array.from({ length: 8 }).map((_, index) => (
 								<SkeletonCard key={index} />

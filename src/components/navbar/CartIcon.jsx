@@ -11,12 +11,12 @@ export function CartIcon({ itemCount = 0 }) {
 			<Link href="/cart">
 				<ShoppingCart className="w-6 h-6" />
 			</Link>
-			{cart.length> 0 && (
+			{cart?.length> 0 && (
 				<Badge
 					className="h-5 min-w-5 rounded-full px-1 font-roboto tabular-nums absolute -top-3 -right-2 bg-green-500"
 					size="sm"
 				>
-					{cart.length}
+					{cart?.length}
 				</Badge>
 			)}
 		</div>
