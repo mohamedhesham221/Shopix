@@ -6,7 +6,7 @@ This project is currently in development. So far, the following features have be
 
 | Feature              | Status |
 |----------------------|--------|
-| 🔐 Registration System | ✅ Built using [Clerk](https://clerk.dev/) |
+| 🔐 Registration System Built using [Clerk](https://clerk.dev/) | ✅  |
 | 🏠 Home Page           | ✅ |
 | 🛍️ Products Page      | ✅|
 | 📂 Category Page       |✅ |
