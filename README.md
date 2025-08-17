@@ -9,5 +9,6 @@ This project is currently in development. So far, the following features have be
 | 🔐 Registration System | Built using [Clerk](https://clerk.dev/) |
 | 🏠 Home Page           | 📂 Category Page   |
 | 🛍️ Products Page      | 📦 Single Product Page|
+| 🛒 Cart Page      | ❤️ Wishlist Page|
 
 Stay tuned for updates as the project progresses!
