@@ -1,5 +1,5 @@
-import BreadcrumbNavigate from '@/components/BreadcrumbNavigate';
-import Products from '@/components/category/Products';
+import BreadcrumbNavigate from '@/shared/components/BreadcrumbNavigate';
+import Products from '@/features/category/components/Products';
 import React from 'react'
 
 const Category = async ({ params }) => {

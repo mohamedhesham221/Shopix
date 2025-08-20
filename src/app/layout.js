@@ -2,13 +2,13 @@ import { Roboto, Inter } from 'next/font/google';
 import "./globals.css";
 import '@smastrom/react-rating/style.css'
 import 'rc-slider/assets/index.css';
-import Navbar from "@/components/navbar/Navbar";
-import Footer from "@/components/Footer";
+import Navbar from "@/features/navbar/components/Navbar";
+import Footer from "@/shared/components/Footer";
 import { ClerkProvider } from '@clerk/nextjs';
-import ReactQueryProvider from "@/providers/ReactQueryProvider";
-import Categories from '@/components/navbar/Categories';
-import CartSyncProvider from '@/providers/CartSyncProvider';
-import WishlistSyncProvider from '@/providers/WishlistSyncProvider';
+import ReactQueryProvider from "@/core/providers/ReactQueryProvider";
+import Categories from '@/features/navbar/components/Categories';
+import CartSyncProvider from '@/core/providers/CartSyncProvider';
+import WishlistSyncProvider from '@/core/providers/WishlistSyncProvider';
 import { Toaster } from 'sonner';
 
 const roboto = Roboto({

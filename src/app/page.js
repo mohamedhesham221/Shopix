@@ -1,11 +1,11 @@
-import AllProductsSection from "@/components/home/AllProductsSection";
-import BrandSlider from "@/components/home/BrandSlider";
-import FeaturedProducts from "@/components/home/FeaturedProducts";
-import FirstBanner from "@/components/home/FirstBanner";
-import HeroSlide from "@/components/home/HeroSlide";
-import SecondBanner from "@/components/home/SecondBanner";
-import ServicesSection from "@/components/home/ServicesSection";
-import ThirdBanner from "@/components/home/ThirdBanner";
+import AllProductsSection from "@/features/home/components/AllProductsSection";
+import BrandSlider from "@/features/home/components/BrandSlider";
+import FeaturedProducts from "@/features/home/components/FeaturedProducts";
+import FirstBanner from "@/features/home/components/FirstBanner";
+import HeroSlide from "@/features/home/components/HeroSlide";
+import SecondBanner from "@/features/home/components/SecondBanner";
+import ServicesSection from "@/features/home/components/ServicesSection";
+import ThirdBanner from "@/features/home/components/ThirdBanner";
 export default function Home() {
 
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <SecondBanner />
       <BrandSlider />
       <ThirdBanner />
-      <ServicesSection /> 
+      <ServicesSection />
       {/*
       */}
     </>

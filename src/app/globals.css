@@ -137,3 +137,7 @@
     @apply after:content-[''] after:block after:w-1.5 after:h-full after:absolute after:-left-3 after:top-0 after:bg-red after:rounded-xl
   }
 }
+
+.label-style {
+  @apply font-roboto text-sm font-semibold text-secondary-foreground;
+}

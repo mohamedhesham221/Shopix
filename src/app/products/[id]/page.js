@@ -1,4 +1,4 @@
-import SingleProduct from "@/components/single-product/SingleProduct";
+import SingleProduct from "@/features/single-product/components/SingleProduct";
 
 export default async function ProductPage({ params }) {
   const { id } = await params;

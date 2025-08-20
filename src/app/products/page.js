@@ -1,5 +1,5 @@
-import AllProducts from '@/components/all-products/AllProducts';
-import BreadcrumbNavigate from '@/components/BreadcrumbNavigate';
+import AllProducts from '@/features/all-products/components/AllProducts';
+import BreadcrumbNavigate from '@/shared/components/BreadcrumbNavigate';
 
 export default function ProductsPage() {
   return (

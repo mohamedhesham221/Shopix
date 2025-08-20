@@ -1,5 +1,5 @@
-import BreadcrumbNavigate from '@/components/BreadcrumbNavigate';
-import CartProducts from '@/components/cart/CartProducts';
+import BreadcrumbNavigate from '@/shared/components/BreadcrumbNavigate';
+import CartProducts from '@/features/cart/components/CartProducts';
 
 export default function CartPage() {
   return (
