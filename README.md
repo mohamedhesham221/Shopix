@@ -93,3 +93,8 @@ Then open: [http://localhost:3000](http://localhost:3000)
 **Muhammad Hisham**
 Email: [muhammedheshamm2@gmail.com](mailto:muhammedheshamm2@gmail.com)
 Portfolio: [https://muhammad-hisham-portfolio-22.vercel.app/](https://muhammad-hisham-portfolio-22.vercel.app/)
+
+---
+
+**Made with ❤️ and ☀️ by Muhammad Hisham**
+⭐ Star this repo if you like it!
