@@ -7,16 +7,9 @@ import Footer from "@/shared/components/Footer";
 import { ClerkProvider } from '@clerk/nextjs';
 import ReactQueryProvider from "@/core/providers/ReactQueryProvider";
 import Categories from '@/features/navbar/components/Categories';
-import dynamic from 'next/dynamic';
+import CartSyncProvider from '@/core/providers/CartSyncProvider';
+import WishlistSyncProvider from '@/core/providers/WishlistSyncProvider';
 import { Toaster } from 'sonner';
-
-const CartSyncProvider = dynamic(() => import ('@/core/providers/CartSyncProvider'), {
-  ssr: false,
-});
-
-const WishlistSyncProvider = dynamic(() => import ('@/core/providers/WishlistSyncProvider'), {
-  ssr: false,
-});
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -56,14 +49,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
 
-    <ClerkProvider>
-      <ReactQueryProvider>
-        <CartSyncProvider>
-          <WishlistSyncProvider>
-            <html lang="en">
-              <body
-                className={`${roboto.variable} ${inter.variable} antialiased overflow-x-hidden`}
-              >
+    <html lang="en">
+      <body
+        className={`${roboto.variable} ${inter.variable} antialiased overflow-x-hidden`}
+      >
+        <ClerkProvider>
+          <ReactQueryProvider>
+            <CartSyncProvider>
+              <WishlistSyncProvider>
                 <Navbar />
                 <Categories />
                 <main>
@@ -78,11 +71,11 @@ export default function RootLayout({ children }) {
 
                 </main>
                 <Footer />
-              </body>
-            </html>
-          </WishlistSyncProvider>
-        </CartSyncProvider>
-      </ReactQueryProvider>
-    </ClerkProvider>
+              </WishlistSyncProvider>
+            </CartSyncProvider>
+          </ReactQueryProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }
