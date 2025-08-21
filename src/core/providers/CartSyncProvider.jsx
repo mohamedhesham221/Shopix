@@ -14,7 +14,7 @@ export default function CartSyncProvider({ children }) {
 		useState(false);
 	// Initial Sync
 	useEffect(() => {
-		if (!isHydrated) return;
+		if (!isHydrated || !isSignedIn) return;
 
 		if (isSignedIn && userDB) {
 			const firebaseCart = userDB?.cart || [];
