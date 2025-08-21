@@ -28,8 +28,8 @@ export async function POST(req) {
         },
         quantity: item.quantity,
       })),
-      success_url: "https://7a023d54ab71.ngrok-free.app/checkout/success",
-      cancel_url: "https://7a023d54ab71.ngrok-free.app/checkout",
+      success_url: "https://shopix.vercel.app/checkout/success",
+      cancel_url: "https://shopix.vercel.app/checkout",
       metadata: {
         userId: userId,
         cart: JSON.stringify(cart),
