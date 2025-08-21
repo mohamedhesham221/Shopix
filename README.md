@@ -1,6 +1,6 @@
 # Shopix 🛒
 
-**Shopix** is a modern e-commerce web application built with **Next.js + React**, delivering a smooth shopping experience with secure authentication, product browsing, wishlist, cart, and checkout. Designed with a clean and responsive UI, Shopix is ready for production and future scalability.
+**Shopix** is a modern e-commerce web application built with Frontend **Next.js + ShadCN UI + TailwindCSS** and Backend **Firebase + Stripe**, delivering a smooth shopping experience with secure authentication, product browsing, wishlist, cart, and checkout. Designed with a clean and responsive UI, Shopix is ready for production and future scalability.
 
 ---
 
