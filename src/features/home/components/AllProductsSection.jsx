@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import { useFetchProducts } from "@/features/all-products/hooks/useFetchProducts";
-import { Skeleton } from "../../../shared/ui/skeleton";
 import ProductCard from "@/shared/components/ProductCard";
 import SlideIn from "@/shared/animations/SlideIn";
 import TextFade from "@/shared/animations/TextFade";

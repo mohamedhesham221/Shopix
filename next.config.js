@@ -11,13 +11,6 @@ module.exports = {
       },
       {
         protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
-        pathname: '**',
-        search: '',
-      },
-      {
-        protocol: 'https',
         hostname: 'img.clerk.com',
         port: '',
         pathname: '**',

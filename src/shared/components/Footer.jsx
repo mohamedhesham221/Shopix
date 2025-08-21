@@ -5,7 +5,7 @@ import { Input } from "@/shared/ui/input";
 import { Button } from "@/shared/ui/button";
 import Link from "next/link";
 
-const accoutLinks = [
+const accountLinks = [
 	{ name: "Profile", href: "/profile" },
 	{ name: "Cart", href: "/cart" },
 	{ name: "Wishlist", href: "/wishlist" },
@@ -60,7 +60,7 @@ export default function Footer() {
 				<div>
 					<h3 className="text-lg font-semibold mb-4">Account</h3>
 					<ul className="space-y-2">
-						{accoutLinks.map((link, index) => (
+						{accountLinks.map((link, index) => (
 							<li key={index}>
 								<Link href={link.href} className="hover:underline">
 									{link.name}

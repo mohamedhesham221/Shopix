@@ -12,7 +12,7 @@ import useCart from "@/features/cart/store/useCart";
 import useWishlist from "@/features/wishlist/store/useWishlist";
 
 export default function Navbar() {
-	// Initialize all hooks
+	// Initialize Create User Hook
 	useCreateUser();
 
 	const { getTotalProducts } = useCart();

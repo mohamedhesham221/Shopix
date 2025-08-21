@@ -30,8 +30,5 @@ export default function WishlistSyncProvider({ children }) {
 		updateUserWishlistInFirebase(wishlist);
 	}, [wishlist, isHydrated, isSignedIn, isWishlistLoadedFromFirebase]);
 
-	// console.log("local wishlist", wishlist);
-	// console.log("firebase wishlist", userDB?.wishlist);
-
 	return children;
 }

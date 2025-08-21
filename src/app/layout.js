@@ -30,11 +30,11 @@ export const metadata = {
   openGraph: {
     title: "Shopix",
     description: "A modern e-commerce platform showcasing the latest in web design and functionality using Next.js and Tailwind CSS for a seamless shopping experience with a focus on performance and user experience.",
-    url: "https://shopix.example.com",
+    url: "https://shopix.vercel.app/",
     siteName: "Shopix",
     images: [
       {
-        url: "https://shopix.example.com/og-image.png",
+        url: "https://shopix.vercel.app//og-image.png",
         width: 1200,
         height: 630,
         alt: "Shopix - Modern E-commerce Platform",

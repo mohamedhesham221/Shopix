@@ -41,9 +41,6 @@ export async function POST(req) {
         apartmentFloor: formData.apartmentFloor,
       },
     });
-    console.log(userId);
-    console.log("Checkout session created:", session.id);
-    console.log("Session metadata:", session.metadata);
     
     return NextResponse.json({ id: session.id });
   } catch (err) {

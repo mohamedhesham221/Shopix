@@ -44,9 +44,6 @@ const CartProducts = () => {
 		);
 	}
 
-	console.log("user", USER_ID);
-	console.log("user Database cart", userDB?.cart);
-	console.log("local cart", cart);
 
 	return (
 		<div className="overflow-x-auto">

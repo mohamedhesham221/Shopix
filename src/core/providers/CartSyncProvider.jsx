@@ -20,8 +20,6 @@ export default function CartSyncProvider({ children }) {
 			const firebaseCart = userDB?.cart || [];
 			const localCart = cart || [];
 
-			console.log("local cart", localCart);
-			console.log("firebase cart", firebaseCart);
 
 			let finalCart = [];
 
@@ -37,7 +35,6 @@ export default function CartSyncProvider({ children }) {
 				finalCart = [];
 			}
 
-			console.log("final updated cart", finalCart);
 			setCart(finalCart);
 			setIsCartLoadedFromFirebase(true);
 		} else if (!isSignedIn) {

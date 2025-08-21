@@ -11,7 +11,6 @@ export default function useFilter(
     return products.filter((product) => {
       const rating = Number(product.rating) || 0;
       const price = Number(product.price) || 0;
-      console.log("filter hook",products);
       
       const matchRating =
         ratingFilter === "all"
@@ -28,7 +27,6 @@ export default function useFilter(
       return matchRating && matchPrice;
     });
   }, [products, ratingFilter, priceRange]);
-  console.log("filter hook filtered products", filteredProducts);
   
   return filteredProducts;
 }

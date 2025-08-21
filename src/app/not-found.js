@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import {Home, ArrowLeft, Mail} from "lucide-react";
+import {Home, ArrowLeft} from "lucide-react";
 
 export default function NotFound() {
   const router = useRouter();
@@ -72,13 +72,6 @@ export default function NotFound() {
             >
               <ArrowLeft size={18} /> Go Back
             </button>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/15 active:translate-y-[1px]"
-            >
-              <Mail size={18} /> Contact Support
-            </Link>
-            
           </div>
         </motion.section>
       </main>

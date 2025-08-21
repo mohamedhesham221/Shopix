@@ -20,7 +20,6 @@ const FeaturedProducts = () => {
 		if (products?.length === 0) return [];
 		return products?.filter((product) => product.rating > "4.9") || [];
 	}, [products]);
-	console.log("Featured products", popularProducts);
 
 	return (
 		<>

@@ -22,9 +22,6 @@ const Products = ({ category }) => {
 		priceRange
 	);
 	const { sortedProducts, setSortKey } = useSort(filteredProducts);
-	console.log(categoryProducts);
-	console.log(sortedProducts);
-	console.log(filteredProducts);
 
 	return (
 		<>
