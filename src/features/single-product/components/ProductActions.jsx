@@ -33,7 +33,7 @@ export default function ProductActions({ product, isLoading }) {
 	const [count, dispatch] = React.useReducer(reducer, initialCounter);
 	const { addToWishlist } = useWishlist();
 	const { isSignedIn } = useUser();
-	const { openSignIn } = useClerk();
+	const { redirectToSignIn } = useClerk();
 
 	React.useEffect(() => {
 		const existing = cart.find((i) => i.id === product?.id);
@@ -106,7 +106,7 @@ export default function ProductActions({ product, isLoading }) {
 								if (isSignedIn) {
 									addToWishlist(product.id);
 								} else {
-									openSignIn();
+									redirectToSignIn();
 								}
 							}}
 						>
