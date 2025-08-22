@@ -134,7 +134,8 @@ Then open: [http://localhost:3000](http://localhost:3000)
     │   ├── components
     │   ├── hooks
     │   └── ui
-    └── middleware.js```
+    └── middleware.js
+```
 
 ## 🛠️ Tech Stack
 
