@@ -71,6 +71,71 @@ Then open: [http://localhost:3000](http://localhost:3000)
 
 ---
 
+## Project Architecture
+
+shopix/
+├── public/
+│   └── assets/
+│       └── brands
+└── src/
+    ├── app/
+    │   ├── api/
+    │   │   ├── checkout_sessions
+    │   │   └── webhook
+    │   ├── cart
+    │   ├── category
+    │   ├── checkout
+    │   ├── products
+    │   ├── profile
+    │   ├── wishlist
+    │   ├── global.css
+    │   ├── layout.js
+    │   ├── loading.js
+    │   ├── not-found.js
+    │   └── page.js
+    ├── core/
+    │   ├── api
+    │   ├── lib
+    │   ├── providers
+    │   ├── service
+    │   └── utils
+    ├── features/
+    │   ├── all-products/
+    │   │   ├── components
+    │   │   └── hooks
+    │   ├── cart/
+    │   │   ├── components
+    │   │   ├── hooks
+    │   │   └── store
+    │   ├── category/
+    │   │   ├── components
+    │   │   └── hooks
+    │   ├── checkout/
+    │   │   ├── components
+    │   │   └── hooks
+    │   ├── home/
+    │   │   ├── components
+    │   │   └── hooks
+    │   ├── navbar/
+    │   │   ├── components
+    │   │   └── hooks
+    │   ├── profile/
+    │   │   ├── components
+    │   │   └── hooks
+    │   ├── single-product/
+    │   │   ├── components
+    │   │   └── hooks
+    │   └── wishlist/
+    │       ├── components
+    │       ├── hooks
+    │       └── store
+    ├── shared/
+    │   ├── animations
+    │   ├── components
+    │   ├── hooks
+    │   └── ui
+    └── middleware.js
+
 ## 🛠️ Tech Stack
 
 * ⚛️ [React](https://reactjs.org/)
