@@ -73,7 +73,7 @@ Then open: [http://localhost:3000](http://localhost:3000)
 
 ## Project Architecture
 
-shopix/
+```shopix/
 ├── public/
 │   └── assets/
 │       └── brands
@@ -134,7 +134,7 @@ shopix/
     │   ├── components
     │   ├── hooks
     │   └── ui
-    └── middleware.js
+    └── middleware.js```
 
 ## 🛠️ Tech Stack
 
