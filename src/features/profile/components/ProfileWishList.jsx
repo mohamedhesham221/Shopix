@@ -1,3 +1,9 @@
+// ProfileWishList.jsx
+// Component to display the user's wishlist inside the profile page
+// - Fetches wishlist products using custom hook (React Query + API integration)
+// - Handles loading, error, and empty states
+// - Renders products in a responsive grid with animation
+
 "use client";
 import SkeletonCard from "@/shared/components/SkeletonCard";
 import SlideIn from "@/shared/animations/SlideIn";

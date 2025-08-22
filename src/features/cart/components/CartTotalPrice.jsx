@@ -1,3 +1,13 @@
+// CartTotalPrice.jsx
+// Cart summary widget component displaying price breakdown and checkout action.
+// - Shows itemized price breakdown (subtotal, shipping, total)
+// - Fetches cart total using Zustand cart store
+// - Displays "Free" shipping when SHIPPING_COST is 0, otherwise shows cost
+// - Calculates final total by adding subtotal and shipping cost
+// - Provides "Proceed to Checkout" button linking to checkout page
+// - Uses responsive design with bordered container and visual separators
+// - Implements consistent styling with shadcn/ui components
+
 import * as React from "react";
 import useCart from "@/features/cart/store/useCart";
 import { Button } from "@/shared/ui/button";

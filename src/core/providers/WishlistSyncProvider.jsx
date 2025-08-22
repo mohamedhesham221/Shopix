@@ -1,3 +1,16 @@
+// WishlistSyncProvider.jsx
+// React context-like provider that keeps the wishlist in sync between:
+// - Local Zustand store (client state)
+// - Firebase (persistent storage)
+// - Clerk authentication (user identity)
+//
+// Flow:
+// 1. On sign in → fetch wishlist from Firebase and set it in Zustand.
+// 2. On sign out → clear wishlist.
+// 3. On wishlist change → push updates back to Firebase (only after initial load).
+//
+// This ensures consistency between client and server while avoiding unnecessary writes.
+
 "use client";
 import useWishlist from "@/features/wishlist/store/useWishlist";
 import { useUser } from "@clerk/nextjs";

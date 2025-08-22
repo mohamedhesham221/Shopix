@@ -1,3 +1,9 @@
+// SecondBanner.jsx
+// Section showing promotional banners (e.g., Sneakers & Motorcycles)
+// - Uses <BannerItem /> for each banner
+// - Responsive grid: single column on mobile → 2 columns on larger screens
+
+
 import * as React from "react";
 import BannerItem from "./BannerItem";
 

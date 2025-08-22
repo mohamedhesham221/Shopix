@@ -1,4 +1,6 @@
-// useGetUser.js
+// File: useGetUser.js
+// Purpose: Custom React hook to sync Clerk user with Firebase user document
+// Notes: Provides access to user data in Firestore and functions to update cart, wishlist, and orders
 "use client";
 import * as React from "react";
 import { useUser } from "@clerk/nextjs";
@@ -11,6 +13,7 @@ export function useGetUser() {
   const { user } = useUser();
   const USER_ID = user?.id;
 
+    // Update user's cart in Firebase
   const updateUserCartInFirebase = async (cart) => {
     if (!USER_ID) return;
     try {
@@ -21,6 +24,7 @@ export function useGetUser() {
     }
   };
 
+    // Update user's wishlist in Firebase
   const updateUserWishlistInFirebase = async (wishlist) => {
     if (!USER_ID) return;
     try {
@@ -31,6 +35,7 @@ export function useGetUser() {
     }
   };
 
+    // Add new order to user's orders array in Firebase (with a unique orderId)
   const updateUserOrdersInFirebase = async (newOrder) => {
     if (!USER_ID) return;
     try {
@@ -43,6 +48,7 @@ export function useGetUser() {
       console.error("Error updating orders in Firebase:", error);
     }
   }
+    // Listen for real-time updates to the user's Firestore document
   React.useEffect(() => {
     if (!USER_ID) return;
 

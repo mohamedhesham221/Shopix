@@ -1,3 +1,9 @@
+// File: ProductCard.jsx
+// Purpose: UI component to display a product card with image, price, discount, rating,
+//          and actions (view details, add to cart, add/remove from wishlist).
+// Notes: - Requires user authentication for wishlist actions (via Clerk)
+//        - Integrates with cart and wishlist state stores
+
 "use client";
 import * as React from "react";
 import {
@@ -19,6 +25,7 @@ import { Button } from "@/shared/ui/button";
 import useWishlist from "@/features/wishlist/store/useWishlist";
 import { useUser, useClerk } from "@clerk/nextjs";
 
+// Custom styles for product rating stars
 const myStyles = {
 	itemShapes: Star,
 	activeFillColor: "#facc15",
@@ -26,6 +33,7 @@ const myStyles = {
 };
 
 const ProductCard = ({ product, loading, inWishlist = false }) => {
+	// Calculate old price before discount
 	const oldPrice =
 		product.price +
 		product.price * (Math.floor(product.discountPercentage) / 100);
@@ -40,6 +48,7 @@ const ProductCard = ({ product, loading, inWishlist = false }) => {
 					"p-2 flex flex-col rounded border-none shadow-none group cursor-pointer gap-0"
 				}
 			>
+				{/* Header: discount badge and wishlist/view actions */}
 				<CardHeader className="bg-[#f5f5f5] pt-5">
 					{product.discountPercentage && (
 						<CardTitle>
@@ -51,6 +60,7 @@ const ProductCard = ({ product, loading, inWishlist = false }) => {
 					<CardAction
 						className={"flex flex-col justify-center gap-3 items-center"}
 					>
+						{/* If product is not in wishlist → show Add to Wishlist & View actions */}
 						{!inWishlist ? (
 							<>
 								<Link href={`/products/${product.id}`}>
@@ -72,6 +82,7 @@ const ProductCard = ({ product, loading, inWishlist = false }) => {
 								</Button>
 							</>
 						) : (
+							// If product is in wishlist → show Remove action
 							<Button
 								size="icon"
 								variant="ghost"
@@ -84,6 +95,8 @@ const ProductCard = ({ product, loading, inWishlist = false }) => {
 					</CardAction>
 				</CardHeader>
 				<CardContent className="overflow-y-hidden relative bg-[#f5f5f5] mb-5">
+					{/* Content: product image and add-to-cart button */}
+
 					<Image
 						src={product.thumbnail}
 						alt={product.title}
@@ -91,6 +104,7 @@ const ProductCard = ({ product, loading, inWishlist = false }) => {
 						height={100}
 						className="w-30 h-30 mb-2 rounded object-cover mx-auto group-hover:scale-95 transition-all"
 					/>
+					{/* Desktop add-to-cart button (slide up animation) */}
 					<motion.button
 						initial={{ y: 100 }}
 						animate={{ y: 0 }}
@@ -110,6 +124,7 @@ const ProductCard = ({ product, loading, inWishlist = false }) => {
 					>
 						<ShoppingCart size={20} /> Add To Cart
 					</motion.button>
+					{/* Mobile add-to-cart button (always visible) */}
 					<Button
 						className="flex items-center justify-center gap-2 lg:hidden text-center bg-black text-white cursor-pointer font-roboto py-1.5 absolute bottom-0 left-0 right-0 rounded-none"
 						onClick={() => {
@@ -126,6 +141,7 @@ const ProductCard = ({ product, loading, inWishlist = false }) => {
 						<ShoppingCart size={20} /> Add To Cart
 					</Button>
 				</CardContent>
+				{/* Footer: product title, price, and rating */}
 				<CardFooter className={"flex flex-col justify-start gap-4"}>
 					<p className="text-start w-full font-inter">{product.title}</p>
 					<div className="flex items-center gap-2 w-full">

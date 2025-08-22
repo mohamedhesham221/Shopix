@@ -1,3 +1,10 @@
+// hooks/useFetchCategories.js
+// Custom hook to fetch and organize product categories from API
+// - Fetches categories with React Query (caching & stale times)
+// - Normalizes raw categories into structured groups (men, women, electronics, etc.)
+// - Provides utility filter function for keyword-based grouping
+// - Returns structured categories, loading, and error states
+
 "use client";
 import * as React from "react";
 import { useQuery } from "@tanstack/react-query";
@@ -25,6 +32,7 @@ export function useFetchCategories() {
     groceries: [],
     vehicles: []
   }
+  // Utility function to filter categories by keywords and optional exclusions
   const filterBy = (keywords, exclude = []) =>
     categories?.filter(
       (cat) =>
@@ -32,6 +40,7 @@ export function useFetchCategories() {
         !exclude.some((e) => cat.includes(e))
     ) || [];
 
+  // Organize categories into grouped structure
   const categoriesData = React.useMemo(() => {
     if (!categories?.length) return initialStructure;
     return {

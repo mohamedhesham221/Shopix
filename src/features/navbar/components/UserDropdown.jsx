@@ -1,4 +1,10 @@
-// components/navbar/UserDropdown.jsx
+// UserDropdown.jsx
+// Dropdown menu component for handling user authentication with Clerk
+// - Shows avatar & account menu when user is signed in
+// - Displays "Sign in" option with guest avatar when signed out
+// - Supports Sign In, Sign Up, and Sign Out actions
+// - Uses Clerk hooks & components for session management
+
 "use client";
 import {
 	SignInButton,

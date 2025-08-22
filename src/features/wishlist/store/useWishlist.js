@@ -1,7 +1,10 @@
+// useWishlist.js
+// Zustand store with persistence for managing wishlist state
+// Includes add, remove, clear, and hydration handling with toast notifications
+
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { toast } from 'sonner';
-import { Heart, HeartOff } from "lucide-react";
 
 const useWishlist = create(
   persist((set, get) => ({

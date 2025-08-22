@@ -1,3 +1,7 @@
+// FirstBanner.jsx
+// Full-width promotional banner with background image, overlay, and animated text
+// Uses TextFade for smooth entry animation and CTA button linking to men's watches category
+
 import * as React from "react";
 import TextFade from "@/shared/animations/TextFade";
 import { Button } from "@/shared/ui/button";

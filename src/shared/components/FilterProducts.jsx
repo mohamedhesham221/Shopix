@@ -1,3 +1,7 @@
+// components/FilterProducts.jsx
+// Purpose: This component provides UI filters for products,
+// including sorting, rating filter, and price range filter.
+
 import * as React from "react";
 import { StarIcon } from "lucide-react";
 import {
@@ -19,6 +23,7 @@ const FilterProducts = ({
 	priceRange,
 	setPriceRange,
 }) => {
+	// Predefined rating filter options
 	const ratings = [
 		{ value: "all", stars: 0, label: "All" },
 		{ value: "0-2", stars: 2 },
@@ -28,6 +33,8 @@ const FilterProducts = ({
 
 	return (
 		<>
+			{/* Section: Sorting options */}
+
 			<p className="font-inter text-red text-xl font-semibold mb-5">Filters:</p>
 			<Select onValueChange={(value) => setSortKey(value)}>
 				<SelectTrigger className="w-full md:w-[200px] cursor-pointer font-inter">
@@ -49,6 +56,7 @@ const FilterProducts = ({
 				orientation="horizontal"
 				className="w-full md:w-[200px] my-8"
 			/>
+			{/* Section: Rating filter */}
 			<p className="font-inter text-gray text-sm font-semibold mb-5">
 				Rating filter
 			</p>
@@ -77,6 +85,7 @@ const FilterProducts = ({
 				orientation="horizontal"
 				className="w-full md:w-[200px] my-8"
 			/>
+			{/* Section: Price range filter using slider */}
 			<p className="font-inter text-gray text-sm font-semibold mb-5">
 				Pricing filter
 			</p>

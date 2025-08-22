@@ -1,8 +1,14 @@
+// File: useSort.js
+// Purpose: Custom React hook to handle product sorting by title, price, or rating
+// Notes: Returns sorted product list along with the current sort key and setter function
+
 import { useMemo, useState } from "react";
 
 export default function useSort(products = []) {
+    // State to hold the current sort key (e.g., "a-z", "lowest", "greatest-rating")
   const [sortKey, setSortKey] = useState("");
 
+    // Memoized sorted array to avoid unnecessary recalculations
   const sortedProducts = useMemo(() => {
     let sortedArr = [...products];
 
@@ -20,7 +26,7 @@ export default function useSort(products = []) {
       case "greatest-rating":
         return sortedArr.sort((a, b) => Number(b.rating) - Number(a.rating));
       default:
-        return sortedArr;
+        return sortedArr; // If no sortKey, return original order
     }
   }, [products, sortKey]);
 

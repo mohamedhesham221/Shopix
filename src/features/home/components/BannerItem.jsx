@@ -1,3 +1,12 @@
+// BannerItem.jsx
+// Reusable banner component for marketing/promotional sections.
+// - Displays responsive image with hover animations (Framer Motion).
+// - Shows interactive overlay: 
+//    → On desktop: overlay with title, description & CTA button appears on hover.
+//    → On mobile: overlay is always visible for accessibility.
+// - Includes animated ArrowRight icon with hover interaction.
+// - Optimized for performance with Next.js <Image> and responsive <AspectRatio>.
+
 "use client";
 
 import * as React from "react";

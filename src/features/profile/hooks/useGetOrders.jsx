@@ -1,3 +1,9 @@
+// useFetchOrders.jsx
+// Custom React hook to fetch user orders from Firestore
+// - Uses Clerk's authenticated user ID to locate Firestore document
+// - Fetches "orders" array from user doc and keeps it in local state
+// - Handles loading, error, and empty states gracefully
+
 "use client";
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";

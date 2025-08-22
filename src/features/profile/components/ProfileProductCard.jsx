@@ -1,8 +1,16 @@
+// ProfileProductCard.jsx
+// Reusable card component for displaying a product in the user's profile section
+// - Shows product image, title, rating, and reviews count
+// - Uses @smastrom/react-rating for star rating UI
+// - Designed to be lightweight & responsive with hover effects
+
 "use client";
 import * as React from "react";
 import { Card, CardContent, CardFooter } from "@/shared/ui/card";
 import { Rating as ReactRating, Star } from "@smastrom/react-rating";
 import Image from "next/image";
+
+// Custom rating styles (star shape + colors)
 const myStyles = {
 	itemShapes: Star,
 	activeFillColor: "#facc15",

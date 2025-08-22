@@ -1,3 +1,8 @@
+// ProfileInfo.jsx
+// Renders the Clerk UserProfile component inside a styled scrollable area
+// Uses Clerk's appearance customization to remove navbar and match app styles
+// Encapsulated with ScrollArea for better UX on smaller screens
+
 "use client";
 
 import * as React from "react";

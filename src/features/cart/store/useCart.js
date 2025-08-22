@@ -1,3 +1,13 @@
+// useCart.js
+// Zustand store for shopping cart state management with persistence.
+// - Manages cart items array with CRUD operations (add, remove, update, clear)
+// - Implements quantity management (increment, decrement, direct update)
+// - Provides cart totals calculation (total products count and total price)
+// - Uses Zustand persist middleware for localStorage synchronization
+// - Handles hydration state to prevent SSR/client mismatch issues
+// - Automatically merges duplicate items by incrementing quantity
+// - Filters out items with zero quantity during decrement operations
+
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 

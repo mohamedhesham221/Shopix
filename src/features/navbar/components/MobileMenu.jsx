@@ -1,4 +1,4 @@
-// components/navbar/MobileMenu.jsx
+// navbar/MobileMenu.jsx
 "use client";
 import {
 	SignInButton,

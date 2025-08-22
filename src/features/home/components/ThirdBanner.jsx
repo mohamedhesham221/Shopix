@@ -1,3 +1,9 @@
+// ThirdBanner.jsx
+// Banner section displaying multiple promotional items in a responsive grid
+// - Uses `BannerItem` component to render each banner card
+// - Content (image, title, description, link, button) is defined in a local array
+// - Grid layout adapts: 1 column (mobile) → 2 columns (sm+ screens)
+
 import * as React from "react";
 import BannerItem from "./BannerItem";
 const banners = [
@@ -5,7 +11,7 @@ const banners = [
 		image: "/assets/sunglass.webp",
 		title: "Shades That Shine",
 		description: "Explore our stylish sunglasses for every season.",
-		link: "/category/sungalsses",
+		link: "/category/sunglasses",
 		buttonText: "Browse Sunglasses",
 	},
 	{

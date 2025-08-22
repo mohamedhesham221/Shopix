@@ -1,3 +1,14 @@
+// AllProducts.jsx
+// Paginated products listing component with infinite scroll functionality and filtering.
+// - Implements "Load More" pagination pattern fetching 12 products at a time
+// - Accumulates products in state to create infinite scroll experience
+// - Provides client-side filtering by rating and price range on accumulated products
+// - Uses sorting functionality with custom sort keys
+// - Displays skeleton loading placeholders during initial load
+// - Shows loading spinner during additional product fetches
+// - Integrates FilterProducts sidebar for user controls and responsive grid layout
+// - Prevents unnecessary API calls when all products have been loaded
+
 "use client";
 import * as React from "react";
 import { Loader2Icon } from "lucide-react";
@@ -10,23 +21,29 @@ import useFilter from "@/shared/hooks/useFilter";
 import { useFetchProducts } from "@/features/all-products/hooks/useFetchProducts";
 
 const AllProducts = () => {
+		// Pagination configuration - fixed limit of 12 products per request
 	const [limit] = React.useState(12);
+	// Current offset for pagination
 	const [skip, setSkip] = React.useState(0);
 	const [currentProducts, setCurrentProducts] = React.useState([]);
 
+		// Fetch products with current pagination parameters
 	const { products, isLoading, total } = useFetchProducts(limit, skip);
 	const [ratingFilter, setRatingFilter] = React.useState("all");
 	const [priceRange, setPriceRange] = React.useState([0, 50000]);
 
+		// Apply filters to accumulated products (not just current batch)
 	const filteredProducts = useFilter(currentProducts, ratingFilter, priceRange);
 	const { sortedProducts, setSortKey } = useSort(filteredProducts);
 
+		// Effect to accumulate products when new batch is fetched
 	React.useEffect(() => {
 		if (products && products.length > 0) {
 			setCurrentProducts((prev) => [...prev, ...products]);
 		}
 	}, [products]);
 
+		// Load more products function - updates skip to fetch next batch
 	const loadMore = () => {
 		if (skip + limit >= total) return;
 		setSkip((prev) => prev + limit);

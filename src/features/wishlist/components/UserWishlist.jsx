@@ -1,3 +1,9 @@
+// UserWishlist.jsx
+// Client component to render user's wishlist page
+// - Fetches wishlist products using custom React Query hook
+// - Displays loading skeletons, error state, or empty state when applicable
+// - Animates product cards with SlideIn and shows total wishlist count
+
 "use client";
 import * as React from "react";
 import SkeletonCard from "@/shared/components/SkeletonCard";

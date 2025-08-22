@@ -1,5 +1,5 @@
 "use client";
-// components/navbar/SearchBar.jsx
+// navbar/SearchBar.jsx
 import { Input } from "@/shared/ui/input";
 import ImageWithFallback from "@/core/utils/ImageFallback";
 import * as React from "react";

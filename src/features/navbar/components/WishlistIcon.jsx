@@ -1,4 +1,4 @@
-// components/navbar/WishlistIcon.jsx
+// navbar/WishlistIcon.jsx
 import { Badge } from "@/shared/ui/badge";
 import { Heart } from "lucide-react";
 import Link from "next/link";

@@ -1,4 +1,4 @@
-// components/navbar/Logo.jsx
+// navbar/Logo.jsx
 import Image from "next/image";
 import Link from "next/link";
 

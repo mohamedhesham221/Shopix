@@ -1,3 +1,9 @@
+// HeroSlide.jsx
+// Hero section carousel for the homepage
+// - Uses embla-carousel with autoplay + Framer Motion for animations
+// - Displays promotional slides with background image, overlay, and CTA button
+// - Responsive design with hidden navigation on mobile
+
 "use client";
 import * as React from "react";
 import { motion } from "framer-motion";

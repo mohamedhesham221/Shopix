@@ -1,3 +1,9 @@
+// ProfileOrders.jsx
+// Component to display user's past orders in profile section
+// - Fetches orders from API using custom hook (useFetchOrders)
+// - Handles loading, error, empty state, and success UI
+// - Renders each order via <ProfileOrderCard />
+
 "use client";
 import * as React from "react";
 import { useFetchOrders } from "@/features/profile/hooks/useGetOrders";

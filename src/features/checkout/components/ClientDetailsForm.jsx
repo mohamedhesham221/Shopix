@@ -1,3 +1,12 @@
+// ClientDetailsForm.jsx
+// Form component for collecting customer shipping and contact information during checkout.
+// - Uses React Hook Form with Zod validation for robust form handling
+// - Collects required fields: fullName, email, phoneNumber, city, streetAddress
+// - Optional apartmentFloor field for detailed address information
+// - Validates input with custom error messages and field descriptions
+// - Integrates with checkout process by calling handleCheckout prop on submission
+// - Responsive design with Tailwind CSS styling and form reset on successful submission
+
 "use client";
 import * as React from "react";
 import { useForm } from "react-hook-form";
@@ -15,7 +24,7 @@ import {
 } from "@/shared/ui/form";
 import { Input } from "@/shared/ui/input";
 
-// ✅ Zod schema
+// Zod validation schema for form fields with custom error messages
 const formSchema = z.object({
 	fullName: z.string().min(5, {
 		message: "Your name must be at least 8 characters.",
@@ -41,6 +50,7 @@ const formSchema = z.object({
 const ClientDetailsForm = ({
 	handleCheckout,
 }) => {
+		// Initialize React Hook Form with Zod resolver and default values
 	const form = useForm({
 		resolver: zodResolver(formSchema),
 		defaultValues: {
@@ -53,6 +63,7 @@ const ClientDetailsForm = ({
 		},
 	});
 
+		// Handle form submission - validates data and triggers checkout process
 	const onSubmit = (data) => {
 		console.log("Form submitted:", data);
 		const formData = {

@@ -1,3 +1,13 @@
+// BuyingItems.jsx
+// Order summary and payment method selection component for checkout page.
+// - Displays cart items with images, titles, quantities, and calculated prices
+// - Shows price breakdown including subtotal, delivery cost, and final total
+// - Provides payment method selection (Cash on Delivery vs Bank/Card payment)
+// - Includes order confirmation button with loading state management
+// - Uses responsive design with hover effects and visual separators
+// - Integrates with external form submission and checkout processing
+// - Handles shipping cost calculations and displays appropriate payment icons
+
 "use client";
 import * as React from "react";
 import { Button } from "@/shared/ui/button";

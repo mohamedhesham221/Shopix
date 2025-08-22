@@ -1,4 +1,4 @@
-// components/navbar/Navbar.jsx
+// navbar/Navbar.jsx
 "use client";
 import * as React from "react";
 import { MobileMenu } from "./MobileMenu";

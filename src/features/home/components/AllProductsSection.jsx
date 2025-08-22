@@ -1,3 +1,11 @@
+// AllProductsSection.jsx
+// Section component to showcase a subset of products on the homepage.
+// - Fetches product data using `useFetchProducts` (React Query).
+// - Filters products by specific categories (mens-shirts, tablets).
+// - Displays products in a responsive grid with entry animations (SlideIn).
+// - Uses `SkeletonCard` placeholders while loading.
+// - Includes heading animations (TextFade) and a CTA button linking to all products.
+
 "use client";
 import * as React from "react";
 import { useFetchProducts } from "@/features/all-products/hooks/useFetchProducts";
@@ -9,6 +17,7 @@ import { Button } from "../../../shared/ui/button";
 import SkeletonCard from "../../../shared/components/SkeletonCard";
 const AllProductsSection = () => {
 	const { products, isLoading } = useFetchProducts();
+
 	const allProducts = React.useMemo(() => {
 		if (products?.length === 0) return [];
 		return (
@@ -17,6 +26,7 @@ const AllProductsSection = () => {
 			) || []
 		);
 	}, [products]);
+	
 	return (
 		<>
 			<section className="w-full px-5 md:px-10 lg:px-40 mt-10 relative">

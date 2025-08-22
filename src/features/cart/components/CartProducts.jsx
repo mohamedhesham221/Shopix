@@ -1,4 +1,12 @@
-// components/cart/CartProducts.jsx
+// CartProducts.jsx
+// Main cart page component displaying cart items in a table layout with quantity controls.
+// - Shows all cart items with product images, names, prices, and calculated subtotals
+// - Provides quantity adjustment controls (increment/decrement buttons)
+// - Includes individual item removal and full cart clearing functionality
+// - Uses responsive table design with horizontal scroll on mobile devices
+// - Displays empty cart state with shopping cart icon when no items present
+// - Integrates CartTotalPrice component for price summary and checkout navigation
+// - Implements Zustand cart store for state management and user authentication hooks
 "use client";
 import * as React from "react";
 import {
@@ -17,13 +25,10 @@ import {
 	ChevronUp,
 	Trash2,
 	ShoppingCart,
-	Loader2,
 } from "lucide-react";
 import CartTotalPrice from "./CartTotalPrice";
-import { useGetUser } from "@/shared/hooks/useGetUser";
 
 const CartProducts = () => {
-	const { USER_ID, userDB } = useGetUser();
 	const {
 		cart,
 		incrementQuantity,

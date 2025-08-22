@@ -1,3 +1,11 @@
+// FeaturedProducts.jsx
+// Section showcasing top-rated products in a responsive carousel
+// - Fetches products via useFetchProducts hook
+// - Filters products with rating > 4.9
+// - Uses embla-carousel with autoplay
+// - Displays SkeletonCard while loading
+// - Animates product cards with SlideIn
+
 "use client";
 import * as React from "react";
 import { useFetchProducts } from "@/features/all-products/hooks/useFetchProducts";

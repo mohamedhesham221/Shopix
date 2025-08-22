@@ -1,4 +1,6 @@
-// hooks/useCreateUser.ts
+// File: hooks/useCreateUser.js
+// Purpose: Custom React hook that ensures a Clerk user has a corresponding Firestore document
+// Notes: Runs on mount when Clerk user is loaded; creates a new Firestore user if one does not exist
 "use client";
 import { useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
@@ -15,6 +17,7 @@ const useCreateUser = () => {
       const userRef = doc(db, "users", user.id);
       const userSnap = await getDoc(userRef);
 
+      // If user document does not exist in Firestore, create it
       if (!userSnap.exists()) {
         await setDoc(userRef, {
           user_id: user.id,

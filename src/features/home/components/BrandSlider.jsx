@@ -1,3 +1,10 @@
+// BrandSlider.jsx
+// Carousel section to showcase featured brands
+// - Uses static brands array with logo images
+// - Animates logos with SlideIn
+// - Embla Carousel with autoplay (3s delay)
+// - Responsive: 1 per slide on mobile, 3 on tablet, 4 on desktop
+
 "use client";
 
 import * as React from "react";

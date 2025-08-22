@@ -1,3 +1,11 @@
+// utils.js
+// Utility functions for text formatting and cart data management.
+// - formatText: Formats category/product text for display with proper spacing and possessive forms
+// - mergeCartData: Merges local and Firebase cart data with quantity conflict resolution
+// - Handles gender-specific text formatting (men/women -> men's/women's)
+// - Uses Map for efficient cart merging and deduplication
+// - Prioritizes higher quantities when merging duplicate cart items
+
 export function formatText(text) {
   const textFormated = text.replace("-", " ")
   if (text.startsWith("men") || text.startsWith("women")) {
@@ -8,6 +16,7 @@ export function formatText(text) {
   }
 }
 
+// Merge local cart data with Firebase cart data, resolving conflicts by keeping higher quantities
 export function mergeCartData(localCart, firebaseCart) {
   const merged = new Map();
 

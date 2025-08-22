@@ -1,3 +1,13 @@
+// Products.jsx
+// Main products listing component with filtering, sorting, and animations.
+// - Fetches products for specific category using React Query
+// - Implements client-side filtering by rating and price range
+// - Provides sorting functionality with custom sort keys
+// - Uses Framer Motion for smooth entry/exit animations and layout transitions
+// - Displays skeleton loading placeholders during data fetch
+// - Responsive grid layout that adapts from 1 to 4 columns based on screen size
+// - Integrates FilterProducts sidebar for user controls and ProductCard for item display
+
 "use client";
 import * as React from "react";
 import useFetchCategoryProducts from "@/features/category/hooks/useFetchCategoryProducts";
@@ -8,19 +18,24 @@ import FilterProducts from "@/shared/components/FilterProducts";
 import useSort from "@/shared/hooks/useSort";
 import useFilter from "@/shared/hooks/useFilter";
 const Products = ({ category }) => {
+		// Fetch products for the specified category with loading and error states
 	const { products, isLoading, isError } = useFetchCategoryProducts(category);
+		// Memoized products array to prevent unnecessary re-renders
 	const categoryProducts = React.useMemo(() => {
 		if (products?.length === 0) return [];
 		return products || [];
 	}, [products]);
+		// Filter state management
 	const [ratingFilter, setRatingFilter] = React.useState("all");
 	const [priceRange, setPriceRange] = React.useState([0, 50000]);
 
+		// Apply filters to products based on rating and price range
 	const filteredProducts = useFilter(
 		categoryProducts,
 		ratingFilter,
 		priceRange
 	);
+		// Apply sorting to filtered products and get sort control function
 	const { sortedProducts, setSortKey } = useSort(filteredProducts);
 
 	return (

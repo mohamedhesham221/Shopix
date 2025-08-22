@@ -1,3 +1,9 @@
+// ServicesSection.jsx
+// Section displaying key shop services (Delivery, Support, Guarantee)
+// - Uses lucide-react icons for visuals
+// - Each service is animated in with <SlideIn />
+// - Responsive grid: 1 column (mobile) → 3 columns (md+ screens)
+
 "use client";
 import * as React from "react";
 import { Truck, Headphones, Shield } from "lucide-react";
