@@ -49,9 +49,8 @@ const useCheckout = () => {
 					createdAt: new Date().toISOString(),
 				};
 
-				// Save order to Firebase and clear cart
+				// Save order to Firebase
 				await updateUserOrdersInFirebase(cashOrderDetails);
-				clearCart();
 				router.push("/checkout/success");
 			} else if (method === "bank") {
 				// Stripe payment flow - create checkout session

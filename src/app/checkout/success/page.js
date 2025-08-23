@@ -6,7 +6,7 @@ import useCart from "@/features/cart/store/useCart";
 export default function SuccessPage() {
   const { clearCart } = useCart();
   React.useEffect(() => {
-			// Clear cart in Firebase if redirection is successful
+			// Clear cart in local if redirection is successful
 			clearCart();
   }, [clearCart]);
   return (
