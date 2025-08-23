@@ -39,7 +39,7 @@ export function SearchBar({ className }) {
 											key={product.id}
 										>
 											<Link
-												href={`products/${product.id}`}
+												href={`/products/${product.id}`}
 												className="flex gap-2 items-center"
 											>
 												<ImageWithFallback
