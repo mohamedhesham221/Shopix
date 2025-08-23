@@ -96,8 +96,6 @@ const useCheckout = () => {
 		} finally {
 			setIsLoading(false);
 			console.log("Checkout process completed");
-			// Clear cart in Firebase if redirection is successful
-			clearCart();
 		}
 	};
 
