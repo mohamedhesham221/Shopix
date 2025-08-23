@@ -86,8 +86,6 @@ const useCheckout = () => {
 
 				// Redirect to Stripe checkout page
 				const result = await stripe.redirectToCheckout({ sessionId: data.id });
-				// Clear cart in Firebase if redirection is successful
-				clearCart();
 				if (result.error) {
 					throw new Error(result.error.message);
 				}
@@ -98,6 +96,8 @@ const useCheckout = () => {
 		} finally {
 			setIsLoading(false);
 			console.log("Checkout process completed");
+			// Clear cart in Firebase if redirection is successful
+			clearCart();
 		}
 	};
 
