@@ -32,7 +32,6 @@ export async function POST(req) {
       cancel_url: "https://shopix.vercel.app/checkout",
       metadata: {
         userId: userId,
-        cart: JSON.stringify(cart),
         fullName: formData.fullName,
         email: formData.email,
         phoneNumber: formData.phoneNumber,

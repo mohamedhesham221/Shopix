@@ -20,19 +20,20 @@ export async function POST(req) {
     if (event.type === "checkout.session.completed") {
       const session = event.data.object;
 
-      // Parse cart
-      let parsedCart;
-      try {
-        parsedCart = JSON.parse(session.metadata.cart);
-      } catch (parseError) {
-        return NextResponse("Invalid cart data", { status: 400 });
-      }
-
+      const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
+        expand: ["data.price.product"],
+      });
+      // Retrieve user reference from Firestore
       const userRef = doc(db, "users", session.metadata.userId);
 
       const orderData = {
         orderId: session.id,
-        items: parsedCart,
+        items: lineItems.data.map(item => ({
+          title: item.price.product.name,
+          img: item.price.product.images?.[0] || null,
+          price: item.price.unit_amount / 100,
+          quantity: item.quantity,
+        })),
         totalAmount: session.amount_total / 100,
         paymentStatus: session.payment_status,
         paymentMethod: "bank",
